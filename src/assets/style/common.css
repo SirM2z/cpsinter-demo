@@ -1,0 +1,65 @@
+@charset 'UTF-8';
+
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: #f1f1f1;
+}
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+.content-width{
+  width: 1400px;
+  margin: 0 auto;
+}
+.content-min-width{
+  min-width: 1400px;
+}
+.cursor_point{
+  cursor: pointer;
+}
+.cps_orange{
+  color: #f07c00!important;
+}
+.cps_bg_orange{
+  background-color: #f07c00!important;
+}
+.cps_bg_color{
+  background-color: #f1f1f1!important;
+}
+.fff_bg_color{
+  background-color: #fff!important;
+}
+.fl {
+  display: inline-block;
+  float: left;
+}
+.fr {
+  display: inline-block;
+  float: right;
+}
+.text-left{
+  text-align: left;
+}
+.text-center{
+  text-align: center;
+}
+.text-right{
+  text-align: right;
+}
+.font-bold{
+  font-weight: bold;
+}
+
+/*覆盖animate.css*/
+.animated.fadeIn,
+.animated.fadeOut,
+.animated.bounceOutRight
+{
+  animation-duration: .3s;
+}
