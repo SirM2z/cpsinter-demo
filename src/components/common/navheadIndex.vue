@@ -18,14 +18,18 @@
         leave-active-class="animated fadeOutUp"
       >
         <div class="login-hover" v-show="loginmodal">
-          <h3 class="f18">Client Login</h3>
+          <div class="login-type">
+            <div @click="changeLoginType('publisher')" :class="{'active': loginType == 'publisher'}" class="type-item f14 text-center cursor_point">Publisher</div>
+            <div class="type-fenge"></div>
+            <div @click="changeLoginType('advertiser')" :class="{'active': loginType == 'advertiser'}" class="type-item f14 text-center cursor_point">Advertiser</div>
+          </div>
           <div class="login-input">
-            <input type="text" placeholder="Username" value="">
-            <input type="password" placeholder="Password" value="">
+            <div class="login-input-item"><input type="text" placeholder="Username" value=""></div>
+            <div class="login-input-item"><input type="password" placeholder="Password" value=""></div>
             <div class="login-btn cps_bg_orange text-center">LOGIN</div>
           </div>
-          <div class="login-forget f18">
-            Forgot your password? <span class="forget-a f14 cps_orange cursor_point">Click here</span> for assistance
+          <div class="login-forget f14 text-center">
+            Forgot your password? <span class="forget-a cps_orange cursor_point">Click here</span> for assistance
           </div>
         </div>
       </transition>
@@ -38,7 +42,8 @@ export default {
   name: 'navheadIndex',
   data () {
     return {
-      loginmodal: false
+      loginmodal: false,
+      loginType: 'publisher'
     }
   },
   mounted: function(){
@@ -46,6 +51,9 @@ export default {
   methods:{
     showLogin: function(){
       this.loginmodal = !this.loginmodal;
+    },
+    changeLoginType: function(type){
+      this.loginType = type;
     }
   }
 }
@@ -127,23 +135,43 @@ export default {
 .login-hover{
   background-color: #fff;
   border-radius: 4px;
-  padding: 19px 29px;
+  padding: 10px;
   position: absolute;
+  width: 400px;
   top: 66px;
   right: 0;
   box-shadow: 0px 0px 15px 0px #ccc;
 }
-.login-hover>h3{
-  color: #414141;
-  margin-bottom: 10px;
-}
-.login-input{
+.login-type{
   display: flex;
   align-items: center;
+  margin-bottom: 30px;
 }
-.login-input>input{
+.type-item{
+  flex: 1;
+  padding: 10px 0;
+  border-bottom: 2px solid transparent;
+  margin: 0 10px;
+}
+.type-item.active{
+  color: #f07c00;
+  border-bottom-color: #f07c00;
+  font-weight: bold;
+}
+.type-fenge{
+  width: 1px;
+  height: 28px;
+  background-color: #c0c0c0;
+}
+.login-input{
+}
+.login-input-item{
+  width: 280px;
+  margin: 0 auto 20px;
+}
+.login-input-item>input{
   height: 26px;
-  width: 160px;
+  width: 272px;
   border: 0;
   margin: 0;
   padding: 0 0 0 8px;
@@ -152,13 +180,14 @@ export default {
   background-color: #f3f3f3;
 }
 .login-btn{
-  width: 80px;
-  height: 40px;
-  line-height: 40px;
+  width: 280px;
+  height: 35px;
+  line-height: 35px;
   color: #fff;
   border-radius: 4px;
+  margin: 0 auto;
 }
 .login-forget{
-  padding-top: 10px;
+  padding: 20px 0;
 }
 </style>

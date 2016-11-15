@@ -13,6 +13,7 @@
 </template>
 
 <script>
+require('../assets/style/advPart.css')
 import navheadAdv from '../components/common/navheadAdv.vue'
 export default {
   name: 'adv',

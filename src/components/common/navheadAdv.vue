@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-head-Adv content-min-width cps_bg_orange">
+  <div class="nav-head-Adv content-min-width cps_bg_orange box_shadow_small">
     <div class="nav-content">
       <div class="logo"><img class="" src="../../assets/images/Duomai.png" alt=""></div>
       <ul class="nav-main f18">
@@ -46,7 +46,6 @@ export default {
     }
   },
   mounted: function(){
-    console.log(this.$route)
   },
   methods:{
   }
@@ -58,7 +57,6 @@ export default {
 .nav-head-Adv{
   width: 100%;
   color: #fff;
-  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
 }
 .nav-content{
   display: flex;

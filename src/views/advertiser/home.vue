@@ -1,20 +1,20 @@
 <template>
-  <div class="home">
-    <div class="home-main content-min-width">
+  <div class="home content-min-width">
+    <div class="home-main">
       <div class="main-left">
-        <div class="main-item recent-data fff_bg_color">Recent 30-day data</div>
+        <div class="main-item box_shadow_small recent-data fff_bg_color">Recent 30-day data</div>
         <div class="main-left-content">
           <div class="content-left">
-            <div class="main-item incentive fff_bg_color">Incentive</div>
+            <div class="main-item box_shadow_small dynamic fff_bg_color">Dynamic</div>
           </div>
           <div class="content-right">
-            <div class="main-item make-money-tutoria fff_bg_color">Make Money Tutoria</div>
+            <div class="main-item box_shadow_small help-center fff_bg_color">Help Center</div>
           </div>
         </div>
       </div>
       <div class="main-right">
-        <div class="main-item active-state fff_bg_color">Active State</div>
-        <div class="main-item network-stats fff_bg_color">Network Stats</div>
+        <div class="main-item box_shadow_small active-state fff_bg_color">Active State</div>
+        <div class="main-item box_shadow_small network-stats fff_bg_color">Network Stats</div>
       </div>
     </div>
   </div>
@@ -39,7 +39,7 @@ export default {
   width: 100%;
 }
 .home-main{
-  padding: 12px 30px 0;
+  padding: 10px 30px;
   display: flex;
 }
 .main-left,.main-right{

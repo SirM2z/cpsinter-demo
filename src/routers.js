@@ -74,12 +74,41 @@ export default new Router({
         {
           path: 'account',
           name: 'Account',
-          component: (resolve) => require(['./views/advertiser/account.vue'], resolve)
+          component: (resolve) => require(['./views/advertiser/account.vue'], resolve),
+          children: [
+            {
+              path: '',
+              name: 'Personal Information',
+              component: (resolve) => require(['./views/account/info.vue'], resolve)
+            },
+            {
+              path: 'password',
+              name: 'Change Password',
+              component: (resolve) => require(['./views/account/password.vue'], resolve)
+            },
+            {
+              path: 'key',
+              name: 'API Key',
+              component: (resolve) => require(['./views/account/key.vue'], resolve)
+            }
+          ]
         },
         {
           path: 'balanceReport',
           name: 'Balance Report',
-          component: (resolve) => require(['./views/advertiser/balanceReport.vue'], resolve)
+          component: (resolve) => require(['./views/advertiser/balanceReport.vue'], resolve),
+          children: [
+            {
+              path: '',
+              name: 'Balance Details',
+              component: (resolve) => require(['./views/balanceReport/balanceDetails.vue'], resolve)
+            },
+            {
+              path: 'transactions',
+              name: 'Transactions',
+              component: (resolve) => require(['./views/balanceReport/transactions.vue'], resolve)
+            }
+          ]
         },
         {
           path: 'API',

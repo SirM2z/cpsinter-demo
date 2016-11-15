@@ -5,6 +5,7 @@
   padding: 0;
 }
 body{
+  width: 100%;
   background-color: #f1f1f1;
 }
 li{
@@ -19,6 +20,9 @@ a{
 }
 .content-min-width{
   min-width: 1400px;
+}
+.box_shadow_small{
+  box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2);
 }
 .cursor_point{
   cursor: pointer;
@@ -55,6 +59,22 @@ a{
 .font-bold{
   font-weight: bold;
 }
+/*自定义表格样式*/
+table.customize{
+  border-top: 1px solid #e0e6ed;
+  border-left: 1px solid #e0e6ed;
+}
+table.customize td, table.customize th{
+  height: 40px;
+  border-right: 1px solid #e0e6ed;
+  border-bottom: 1px solid #e0e6ed;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+}
+table.customize th{
+  background-color: #f7f7f7;
+}
 
 /*覆盖animate.css*/
 .animated.fadeIn,
@@ -62,4 +82,111 @@ a{
 .animated.bounceOutRight
 {
   animation-duration: .3s;
+}
+
+/*覆盖element-ui样式*/
+/*input输入框样式覆盖*/
+.bar-main>.search-item .el-input__inner{
+  height: 28px;
+  border-color: #c8c8c8;
+}
+.bar-main>.search-item .el-input__inner::-webkit-input-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-input__inner::-moz-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-input__inner:-ms-input-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-input__inner::placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-select .el-input .el-input__icon{
+  color: #c8c8c8;
+}
+/*导出input输入框样式覆盖*/
+.bar-main>.export-item .el-input__inner{
+  width: 120px;
+  border-color: #f07c00;
+  color: #f07c00;
+}
+.bar-main>.export-item .el-input__inner::-webkit-input-placeholder{
+  color: #f07c00;
+}
+.bar-main>.export-item .el-input__inner::-moz-placeholder{
+  color: #f07c00;
+}
+.bar-main>.export-item .el-input__inner:-ms-input-placeholder{
+  color: #f07c00;
+}
+.bar-main>.export-item .el-input__inner::placeholder{
+  color: #f07c00;
+}
+.bar-main>.export-item .el-select .el-input .el-input__icon{
+  color: #f07c00;
+}
+/*日期选择器input输入框样式覆盖*/
+.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor{
+  height: 28px;
+  border-color: #c8c8c8;
+}
+.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor::-webkit-input-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor::-moz-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor:-ms-input-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor::placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-date-editor__trigger.el-icon{
+  color: #c8c8c8;
+}
+.bar-main>.search-item .el-date-editor__editor:focus{
+  border-color: #c8c8c8;
+}
+.bar-main>.search-item .el-date-editor{
+  height: 28px;
+}
+.bar-main>.search-item .el-date-editor:focus,.bar-main>.search-item .el-date-editor:hover{
+  border-color: #c8c8c8;
+}
+.bar-main>.search-item .el-date-editor__editor{
+  height: 28px;
+}
+.bar-main>.search-item .el-date-editor__editor::-webkit-input-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-date-editor__editor::-moz-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-date-editor__editor:-ms-input-placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-date-editor__editor::placeholder {
+	color: #c8c8c8
+}
+.bar-main>.search-item .el-date-editor__trigger.el-icon{
+  line-height: 30px;
+}
+/*table标题背景样式覆盖*/
+.main-table>.table-content .el-table th {
+  background-color: #f7f7f7;
+}
+.main-table>.table-content .el-table__header-wrapper thead div {
+    background-color: #f7f7f7;
+}
+/*分页样式覆盖*/
+.el-pager li:hover {
+  color: #f07c00;
+}
+.el-pager li.active {
+  border-color: #f07c00;
+  background-color: #f07c00;
+  color: #fff;
+  cursor: default;
 }

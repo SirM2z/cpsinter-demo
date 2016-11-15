@@ -1,50 +1,38 @@
 <template>
-  <div class="links">
-    <div class="links-main">
+  <div class="transactions">
+    <div class="transactions-main">
       <div class="search-bar box_shadow_small fff_bg_color">
         <div class="bar-head">
           <span @click="showbar = !showbar" class="cursor_point collapsible fl" :class="{'collapsY':showbar,'collapsN':!showbar}"></span>
-          <h3 class="fl">Links Management</h3>
-          <span class="bar-add-btn fr cps_bg_orange text-center cursor_point">Add Link</span>
+          <h3 class="fl">Transactions</h3>
         </div>
         <transition name="slide">
           <div v-show="showbar" class="bar-main">
             <div class="search-item fl">
-              <p class="f14">Activity</p>
-              <el-select v-model="search_activity" clearable>
-                <el-option
-                  v-for="item in options"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
+              <p class="f14">Creation Time</p>
+              <el-date-picker
+                v-model="search_time"
+                type="daterange"
+                placeholder="选择日期范围"
+                style="width: 220px">
+              </el-date-picker>
             </div>
             <div class="search-item fl">
-              <p class="f14">Activity State</p>
-              <el-select v-model="search_state" clearable>
-                <el-option
-                  v-for="item in options"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
-            </div>
-            <div class="search-item fl">
-              <p class="f14">Review Way</p>
-              <el-select v-model="search_review" clearable>
-                <el-option
-                  v-for="item in options"
-                  :label="item.label"
-                  :value="item.value">
-                </el-option>
-              </el-select>
-            </div>
-            <div class="search-item fl">
-              <p class="f14">Link Name</p>
+              <p class="f14">Campaign ID/Name</p>
               <el-input
                 placeholder="请输入内容"
                 v-model="search_input">
               </el-input>
+            </div>
+            <div class="search-item fl">
+              <p class="f14">Type</p>
+              <el-select v-model="search_type" clearable>
+                <el-option
+                  v-for="item in options"
+                  :label="item.label"
+                  :value="item.value">
+                </el-option>
+              </el-select>
             </div>
             <div class="search-btn cursor_point cps_bg_orange text-center f14 fl">search</div>
           </div>
@@ -97,25 +85,27 @@ import elOption from 'element-ui/lib/option'
 import elPagination from 'element-ui/lib/pagination'
 import elTable from 'element-ui/lib/table'
 import elTableColumn from 'element-ui/lib/table-column'
+import elDatePicker from 'element-ui/lib/date-picker'
 export default {
-  name: 'links',
+  name: 'transactions',
   components: {
     elInput,
     elSelect,
     elOption,
     elPagination,
     elTable,
-    elTableColumn
+    elTableColumn,
+    elDatePicker
   },
   data () {
     return {
       // 搜索框显示隐藏
       showbar: true,
       // 搜索条件
+      search_time: '',
       search_input: '',
-      search_activity: '',
-      search_state: '',
-      search_review: '',
+      search_type: '',
+      export_type: '',
       // 分页配置
       current_page: 1,
       page_sizes: [20, 50, 100, 200],
@@ -169,10 +159,10 @@ export default {
 </script>
 
 <style scoped>
-.links{
+.transactions{
   width: 100%;
 }
-.links-main{
+.transactions-main{
   margin: 10px 30px;
 }
 </style>

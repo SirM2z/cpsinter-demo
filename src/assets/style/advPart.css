@@ -1,0 +1,136 @@
+/*局部页面通用样式--开始*/
+/*搜索框样式*/
+.search-bar{
+  margin-bottom: 10px;
+}
+.bar-head{
+  overflow: hidden;
+  padding: 15px 0 10px 10px;
+  border-bottom: 1px solid #e1e1e1;
+}
+.collapsible{
+  display: inline-block;
+  width: 28px;
+  height: 28px;
+  margin-right: 6px;
+}
+.collapsY{
+  background: url('../../assets/images/shouhui.png') no-repeat 100%;
+}
+.collapsN{
+  background: url('../../assets/images/zhankai.png') no-repeat 100%;
+}
+.bar-head>h3{
+  line-height: 28px;
+}
+.bar-add-btn{
+  padding: 5px 8px;
+  color: #fff;
+  margin-right: 30px;
+  border-radius: 2px;
+}
+.slide-enter-active, .slide-leave-active {
+  transition: transform .3s cubic-bezier(.23,1,.32,1) .1s,opacity .3s cubic-bezier(.23,1,.32,1) .1s;
+  transform-origin:center top
+}
+
+.slide-enter,
+.slide-leave-active {
+  opacity: 0;
+  transform: scaleY(0);
+}
+.bar-main{
+  overflow: hidden;
+  padding: 20px 28px 30px;
+}
+.search-item>p{
+  padding-bottom: 4px;
+}
+.bar-main>.search-item:not(:first-child){
+  margin-left: 40px;
+}
+.search-btn{
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 70px;
+  height: 28px;
+  line-height: 28px;
+  border-radius: 2px;
+  color: #fff;
+}
+.bar-main>.search-item.export-item{
+  margin-top: 20px;
+  margin-left: 0;
+}
+.export-type{
+  display: inline-block;
+}
+.export-btn{
+  display: inline-block;
+  width: 70px;
+  height: 26px;
+  line-height: 26px;
+  color: #fff;
+  border-radius: 2px;
+  background-color: #f3a95a;
+  margin-left: 40px;
+}
+/*分页与表格样式*/
+.main-table{
+  padding: 10px 30px;
+}
+.page-bar{
+  overflow: hidden;
+}
+.table-content{
+  margin: 10px 0;
+}
+/*表格注解样式*/
+.table-note{
+  margin-top: 30px;
+  overflow: hidden;
+}
+.note-title{
+  display: flex;
+  align-items: center;
+}
+.note-title>span{
+  display: inline-block;
+}
+.title-icon{
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  background: url('../../assets/images/tips.png') no-repeat 100%;
+  margin-right: 3px;
+}
+.note-item{
+  color: #7c7c7c;
+  margin-bottom: 15px;
+}
+/*信息展示样式*/
+.infomation-head{
+  padding: 20px 0 10px;
+  margin: 0 30px;
+  border-bottom: 1px solid #e7e7e7;
+}
+.infomation-head>h3:before{
+  content: '';
+  display: inline-block;
+  margin-right: 3px;
+  width: 4px;
+  height: 14px;
+  background-color: #f07c00;
+}
+.infomation-body{
+  padding: 30px 200px 0;
+}
+.infomation-item{
+  display: flex;
+  align-items: center;
+}
+.infomation-item>.item{
+  flex: 1;
+  margin-bottom: 30px;
+}
+/*局部页面通用样式--结束*/

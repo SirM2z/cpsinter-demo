@@ -1,6 +1,6 @@
 <template>
   <div class="advertisers content-min-width">
-    <div class="advertisers-tab fff_bg_color">
+    <div class="advertisers-tab box_shadow_small fff_bg_color">
       <div class="advertisers-tab-main">
         <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers" exact>Campaigns</router-link></div>
         <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers/links" exact>Links</router-link></div>
