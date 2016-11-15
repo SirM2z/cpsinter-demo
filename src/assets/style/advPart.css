@@ -133,4 +133,10 @@
   flex: 1;
   margin-bottom: 30px;
 }
+.infomation-item>.item>label{
+  color: #232323;
+}
+.infomation-item>.item>span{
+  font-weight: bold;
+}
 /*局部页面通用样式--结束*/
