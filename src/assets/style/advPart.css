@@ -31,7 +31,7 @@
 }
 .slide-enter-active, .slide-leave-active {
   transition: transform .3s cubic-bezier(.23,1,.32,1) .1s,opacity .3s cubic-bezier(.23,1,.32,1) .1s;
-  transform-origin:center top
+  transform-origin:center top;
 }
 
 .slide-enter,
@@ -109,10 +109,14 @@
   margin-bottom: 15px;
 }
 /*信息展示样式*/
+.infomation{
+  padding-bottom: 30px;
+}
 .infomation-head{
   padding: 20px 0 10px;
   margin: 0 30px;
   border-bottom: 1px solid #e7e7e7;
+  overflow: hidden;
 }
 .infomation-head>h3:before{
   content: '';
@@ -138,5 +142,64 @@
 }
 .infomation-item>.item>span{
   font-weight: bold;
+}
+.infomation-head-right{
+  height: 26px;
+  line-height: 26px;
+  width: 190px;
+  border-radius: 4px;
+  color: #fff;
+}
+.infomation-head-right-note{
+  margin-top: 6px;
+}
+.infomation-head-right-note>span{
+  color: #f17979;
+}
+.add-body{
+  padding: 30px;
+}
+/*添加table样式*/
+table.add-table>tr>th{
+  width: 300px;
+}
+table.add-table>tr>th>span{
+  color: #f17979;
+}
+table.add-table>tr>td{
+  padding: 10px 35px;
+  text-align: left;
+  overflow: hidden
+}
+table.add-table>tr>td>div.width-280{
+  width: 280px;
+}
+table.add-table .table-td-note{
+  color: #a3a3a3;
+}
+table.add-table .input-file{
+  overflow: hidden;
+}
+table.add-table .input-file-btn{
+  width: 85px;
+  height: 26px;
+  line-height: 26px;
+  background-color: #f3a95a;
+  color: #fff;
+  border-radius: 2px;
+  margin-bottom: 5px;
+}
+/*添加按钮样式*/
+.add-btn>span{
+  display: inline-block;
+  width: 70px;
+  height: 26px;
+  line-height: 26px;
+  text-align: center;
+  border-radius: 2px;
+  color: #fff;
+}
+.add-btn>span:last-of-type{
+  margin-left: 120px;
 }
 /*局部页面通用样式--结束*/

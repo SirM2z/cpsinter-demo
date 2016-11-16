@@ -1,12 +1,12 @@
 <template>
-  <div class="advertisers content-min-width">
+  <div class="advertisers">
     <div class="advertisers-tab box_shadow_small fff_bg_color">
       <div class="advertisers-tab-main">
         <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers" exact>Campaigns</router-link></div>
-        <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers/links" exact>Links</router-link></div>
-        <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers/promotions" exact>Promotions</router-link></div>
+        <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers/links" :class="{'advertisers-tab-active':$route.path.indexOf('links')>-1}" exact>Links</router-link></div>
+        <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers/promotions" :class="{'advertisers-tab-active':$route.path.indexOf('promotions')>-1}" exact>Promotions</router-link></div>
         <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers/incentives" exact>Incentives</router-link></div>
-        <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers/coupons" exact>Coupons</router-link></div>
+        <div class="advertisers-tab-item cursor_point"><router-link active-class="advertisers-tab-active" to="/advertiser/advertisers/coupons" :class="{'advertisers-tab-active':$route.path.indexOf('coupons')>-1}" exact>Coupons</router-link></div>
       </div>
     </div>
     <transition

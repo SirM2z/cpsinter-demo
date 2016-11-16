@@ -1,17 +1,18 @@
 <template>
   <div class="promotions">
     <div class="promotions-main">
-      <div class="search-bar box_shadow_small fff_bg_color">
-        <div class="bar-head">
+      <div class="search-bar">
+        <div class="bar-head box_shadow_small fff_bg_color">
           <span @click="showbar = !showbar" class="cursor_point collapsible fl" :class="{'collapsY':showbar,'collapsN':!showbar}"></span>
           <h3 class="fl">Promotions Management</h3>
-          <span class="bar-add-btn fr cps_bg_orange text-center cursor_point">Add Promotion</span>
+          <!--<span class="bar-add-btn fr cps_bg_orange text-center cursor_point">Add Promotion</span>-->
+          <router-link to="/advertiser/advertisers/promotionsAdd" class="bar-add-btn fr cps_bg_orange text-center cursor_point" tag="span">Add Promotion</router-link>
         </div>
         <transition name="slide">
-          <div v-show="showbar" class="bar-main">
+          <div v-show="showbar" class="bar-main box_shadow_small fff_bg_color">
             <div class="search-item fl">
               <p class="f14">Advertising Campaign</p>
-              <el-select v-model="search_campaign" clearable>
+              <el-select v-model="search_campaign" placeholder="please select" clearable>
                 <el-option
                   v-for="item in options"
                   :label="item.label"
@@ -21,7 +22,7 @@
             </div>
             <div class="search-item fl">
               <p class="f14">Review Status</p>
-              <el-select v-model="search_state" clearable>
+              <el-select v-model="search_state" placeholder="please select" clearable>
                 <el-option
                   v-for="item in options"
                   :label="item.label"
@@ -74,7 +75,6 @@
 </template>
 
 <script>
-import elInput from 'element-ui/lib/input'
 import elSelect from 'element-ui/lib/select'
 import elOption from 'element-ui/lib/option'
 import elPagination from 'element-ui/lib/pagination'
@@ -83,7 +83,6 @@ import elTableColumn from 'element-ui/lib/table-column'
 export default {
   name: 'promotions',
   components: {
-    elInput,
     elSelect,
     elOption,
     elPagination,

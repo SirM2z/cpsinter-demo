@@ -3,7 +3,9 @@
     <div class="info-main">
       <div class="infomation fff_bg_color">
         <div class="infomation-head">
-          <h3 class="f16">Balance Details</h3>
+          <h3 class="f16 fl">Balance Details</h3>
+          <!--<div class="infomation-head-right text-center cursor_point cps_bg_orange fr f14">Modify Member Information</div>-->
+          <router-link to="/advertiser/account/infoEdit" class="infomation-head-right text-center cursor_point cps_bg_orange fr f14" tag="div">Modify Member Information</router-link>
         </div>
         <div class="infomation-body">
           <div class="infomation-item f14">

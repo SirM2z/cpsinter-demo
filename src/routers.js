@@ -38,9 +38,19 @@ export default new Router({
               component: (resolve) => require(['./views/advertisers/links.vue'], resolve)
             },
             {
+              path: 'linksAdd',
+              name: 'Links Add',
+              component: (resolve) => require(['./views/advertisers/linksAdd.vue'], resolve)
+            },
+            {
               path: 'promotions',
               name: 'Promotions',
               component: (resolve) => require(['./views/advertisers/promotions.vue'], resolve)
+            },
+            {
+              path: 'promotionsAdd',
+              name: 'Promotions Add',
+              component: (resolve) => require(['./views/advertisers/promotionsAdd.vue'], resolve)
             },
             {
               path: 'incentives',
@@ -51,6 +61,11 @@ export default new Router({
               path: 'coupons',
               name: 'Coupons',
               component: (resolve) => require(['./views/advertisers/coupons.vue'], resolve)
+            },
+            {
+              path: 'couponsAdd',
+              name: 'Coupons Add',
+              component: (resolve) => require(['./views/advertisers/couponsAdd.vue'], resolve)
             }
           ]
         },
@@ -80,6 +95,11 @@ export default new Router({
               path: '',
               name: 'Personal Information',
               component: (resolve) => require(['./views/account/info.vue'], resolve)
+            },
+            {
+              path: 'infoEdit',
+              name: 'Personal Information',
+              component: (resolve) => require(['./views/account/infoEdit.vue'], resolve)
             },
             {
               path: 'password',

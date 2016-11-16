@@ -1,6 +1,8 @@
 <template>
   <div class="API">
-    <h1>{{ msg }}</h1>
+    <div class="API-main">
+      <h1>{{ msg }}</h1>
+    </div>
   </div>
 </template>
 
@@ -18,4 +20,10 @@ export default {
 </script>
 
 <style scoped>
+.API{
+  width: 100%;
+}
+.API-main{
+  margin: 10px 30px;
+}
 </style>

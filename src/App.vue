@@ -18,6 +18,13 @@ require('./assets/style/font.css')
 require('./assets/style/common.css')
 
 // element-ui局部引入开始
+// 语言
+import lang from 'element-ui/lib/locale/lang/en'
+import locale from 'element-ui/lib/locale'
+
+// 设置语言
+locale.use(lang)
+
 // element-ui基础样式
 import 'element-ui/lib/theme-default/base.css'
 
@@ -36,6 +43,12 @@ import 'element-ui/lib/theme-default/message.css'
 // Notification 通知
 import 'element-ui/lib/theme-default/notification.css'
 
+// Radio 单选框
+import elRadio from 'element-ui/lib/radio'
+import elRadioGroup from 'element-ui/lib/radio-group'
+import elRadioButton from 'element-ui/lib/radio-button'
+import 'element-ui/lib/theme-default/radio.css'
+
 // Input 输入框
 import elInput from 'element-ui/lib/input'
 import 'element-ui/lib/theme-default/input.css'
@@ -47,6 +60,16 @@ import elOptionGroup from 'element-ui/lib/option-group'
 import 'element-ui/lib/theme-default/select.css'
 import 'element-ui/lib/theme-default/select-dropdown.css'
 import 'element-ui/lib/theme-default/option.css'
+
+// Dropdown 下拉菜单
+import elDropdown from 'element-ui/lib/dropdown'
+import elDropdownMenu from 'element-ui/lib/dropdown-menu'
+import elDropdownItem from 'element-ui/lib/dropdown-item'
+import 'element-ui/lib/theme-default/dropdown.css'
+
+// Upload 上传
+import elUpload from 'element-ui/lib/upload'
+import 'element-ui/lib/theme-default/upload.css'
 
 // Pagination 分页
 import elPagination from 'element-ui/lib/pagination'

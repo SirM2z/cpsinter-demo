@@ -1,23 +1,23 @@
 <template>
   <div class="campaigns">
     <div class="campaigns-main">
-      <div class="search-bar box_shadow_small fff_bg_color">
-        <div class="bar-head">
+      <div class="search-bar">
+        <div class="bar-head box_shadow_small fff_bg_color">
           <span @click="showbar = !showbar" class="cursor_point collapsible fl" :class="{'collapsY':showbar,'collapsN':!showbar}"></span>
           <h3 class="fl">Campaigns</h3>
         </div>
         <transition name="slide">
-          <div v-show="showbar" class="bar-main">
+          <div v-show="showbar" class="bar-main box_shadow_small fff_bg_color">
             <div class="search-item fl">
               <p class="f14">Activity ID/Name/URL</p>
               <el-input
-                placeholder="请输入内容"
+                placeholder=""
                 v-model="search_input">
               </el-input>
             </div>
             <div class="search-item fl">
               <p class="f14">Activity State</p>
-              <el-select v-model="search_state" clearable>
+              <el-select v-model="search_state" placeholder="please select" clearable>
                 <el-option
                   v-for="item in options"
                   :label="item.label"
@@ -27,7 +27,7 @@
             </div>
             <div class="search-item fl">
               <p class="f14">Review Way</p>
-              <el-select v-model="search_review" clearable>
+              <el-select v-model="search_review" placeholder="please select" clearable>
                 <el-option
                   v-for="item in options"
                   :label="item.label"

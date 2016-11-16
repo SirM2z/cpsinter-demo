@@ -1,5 +1,5 @@
 <template>
-  <div class="balanceReport content-min-width">
+  <div class="balanceReport">
     <div class="balanceReport-tab box_shadow_small fff_bg_color">
       <div class="balanceReport-tab-main">
         <div class="balanceReport-tab-item cursor_point"><router-link active-class="balanceReport-tab-active" to="/advertiser/balanceReport" exact>Balance Details</router-link></div>

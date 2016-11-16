@@ -1,5 +1,5 @@
 <template>
-  <div class="home content-min-width">
+  <div class="home">
     <div class="home-main">
       <div class="main-left">
         <div class="main-item box_shadow_small recent-data fff_bg_color">Recent 30-day data</div>

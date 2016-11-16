@@ -48,7 +48,7 @@ export default {
   .loading-box .loader {
     position: relative;
     border: 4px solid #ccc;
-    border-right-color: #4099ef;
+    border-right-color: #f07c00;
     border-radius: 50%;
     display: inline-block;
     -webkit-animation: loading 0.6s linear;

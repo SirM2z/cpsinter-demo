@@ -1,32 +1,32 @@
 <template>
   <div class="transactions">
     <div class="transactions-main">
-      <div class="search-bar box_shadow_small fff_bg_color">
-        <div class="bar-head">
+      <div class="search-bar">
+        <div class="bar-head box_shadow_small fff_bg_color">
           <span @click="showbar = !showbar" class="cursor_point collapsible fl" :class="{'collapsY':showbar,'collapsN':!showbar}"></span>
           <h3 class="fl">Transactions</h3>
         </div>
         <transition name="slide">
-          <div v-show="showbar" class="bar-main">
+          <div v-show="showbar" class="bar-main box_shadow_small fff_bg_color">
             <div class="search-item fl">
               <p class="f14">Creation Time</p>
               <el-date-picker
                 v-model="search_time"
                 type="daterange"
-                placeholder="选择日期范围"
+                placeholder="Select a date range"
                 style="width: 220px">
               </el-date-picker>
             </div>
             <div class="search-item fl">
               <p class="f14">Campaign ID/Name</p>
               <el-input
-                placeholder="请输入内容"
+                placeholder=""
                 v-model="search_input">
               </el-input>
             </div>
             <div class="search-item fl">
               <p class="f14">Type</p>
-              <el-select v-model="search_type" clearable>
+              <el-select v-model="search_type" placeholder="please select" clearable>
                 <el-option
                   v-for="item in options"
                   :label="item.label"

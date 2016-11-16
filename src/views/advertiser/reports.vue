@@ -1,5 +1,5 @@
 <template>
-  <div class="reports content-min-width">
+  <div class="reports">
     <div class="reports-tab box_shadow_small fff_bg_color">
       <div class="reports-tab-main">
         <div class="reports-tab-item cursor_point"><router-link active-class="reports-tab-active" to="/advertiser/reports" exact>Performance Reports</router-link></div>

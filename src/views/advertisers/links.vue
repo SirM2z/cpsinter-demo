@@ -1,17 +1,18 @@
 <template>
   <div class="links">
     <div class="links-main">
-      <div class="search-bar box_shadow_small fff_bg_color">
-        <div class="bar-head">
+      <div class="search-bar">
+        <div class="bar-head box_shadow_small fff_bg_color">
           <span @click="showbar = !showbar" class="cursor_point collapsible fl" :class="{'collapsY':showbar,'collapsN':!showbar}"></span>
           <h3 class="fl">Links Management</h3>
-          <span class="bar-add-btn fr cps_bg_orange text-center cursor_point">Add Link</span>
+          <!--<span class="bar-add-btn fr cps_bg_orange text-center cursor_point">Add Link</span>-->
+          <router-link to="/advertiser/advertisers/linksAdd" class="bar-add-btn fr cps_bg_orange text-center cursor_point" tag="span">Add Link</router-link>
         </div>
         <transition name="slide">
-          <div v-show="showbar" class="bar-main">
+          <div v-show="showbar" class="bar-main box_shadow_small fff_bg_color">
             <div class="search-item fl">
               <p class="f14">Activity</p>
-              <el-select v-model="search_activity" clearable>
+              <el-select v-model="search_activity" placeholder="please select" clearable>
                 <el-option
                   v-for="item in options"
                   :label="item.label"
@@ -21,7 +22,7 @@
             </div>
             <div class="search-item fl">
               <p class="f14">Activity State</p>
-              <el-select v-model="search_state" clearable>
+              <el-select v-model="search_state" placeholder="please select" clearable>
                 <el-option
                   v-for="item in options"
                   :label="item.label"
@@ -31,7 +32,7 @@
             </div>
             <div class="search-item fl">
               <p class="f14">Review Way</p>
-              <el-select v-model="search_review" clearable>
+              <el-select v-model="search_review" placeholder="please select" clearable>
                 <el-option
                   v-for="item in options"
                   :label="item.label"
@@ -42,7 +43,7 @@
             <div class="search-item fl">
               <p class="f14">Link Name</p>
               <el-input
-                placeholder="请输入内容"
+                placeholder=""
                 v-model="search_input">
               </el-input>
             </div>

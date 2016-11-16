@@ -1,5 +1,5 @@
 <template>
-  <div class="adv">
+  <div class="adv content-min-width">
     <navhead-adv></navhead-adv>
     <transition
       name="custom-classes-transition"

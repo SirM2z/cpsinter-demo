@@ -3,9 +3,15 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: arial,sans-serif;
+}
+html{
+  width: 100%;
+  background-color: #f1f1f1;
 }
 body{
   width: 100%;
+  min-width: 1400px;
   background-color: #f1f1f1;
 }
 li{
@@ -38,6 +44,9 @@ a{
 }
 .fff_bg_color{
   background-color: #fff!important;
+}
+.fff_color{
+  color: #fff!important;
 }
 .fl {
   display: inline-block;
@@ -86,24 +95,38 @@ table.customize th{
 
 /*覆盖element-ui样式*/
 /*input输入框样式覆盖*/
-.bar-main>.search-item .el-input__inner{
+.el-textarea__inner:focus{
+  border-color: #c8c8c8;
+}
+.el-input__inner{
   height: 28px;
   border-color: #c8c8c8;
 }
-.bar-main>.search-item .el-input__inner::-webkit-input-placeholder {
+.el-input__inner::-webkit-input-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-input__inner::-moz-placeholder {
+.el-input__inner::-moz-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-input__inner:-ms-input-placeholder {
+.el-input__inner:-ms-input-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-input__inner::placeholder {
+.el-input__inner::placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-select .el-input .el-input__icon{
+.el-select .el-input .el-input__icon{
   color: #c8c8c8;
+}
+.el-select .el-input__inner:focus{
+  border-color: #c8c8c8;
+}
+/*Radio 单选框样式覆盖*/
+.el-radio__inner.is-checked {
+  border-color: #f07c00;
+  background: #f07c00;
+}
+.el-radio__inner:not(.is-disabled):hover {
+  border-color: #f07c00;
 }
 /*导出input输入框样式覆盖*/
 .bar-main>.export-item .el-input__inner{
@@ -127,50 +150,60 @@ table.customize th{
   color: #f07c00;
 }
 /*日期选择器input输入框样式覆盖*/
-.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor{
+.el-date-table td.today{
+  color: #f07c00;
+}
+.el-date-table td.current, .el-date-table td.end-date, .el-date-table td.start-date{
+  color: #fff;
+  background-color: #f07c00!important;
+}
+.el-date-editor.is-active>.el-date-editor__editor{
   height: 28px;
   border-color: #c8c8c8;
 }
-.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor::-webkit-input-placeholder {
+.el-date-editor.is-active>.el-date-editor__editor::-webkit-input-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor::-moz-placeholder {
+.el-date-editor.is-active>.el-date-editor__editor::-moz-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor:-ms-input-placeholder {
+.el-date-editor.is-active>.el-date-editor__editor:-ms-input-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-date-editor.is-active>.el-date-editor__editor::placeholder {
+.el-date-editor.is-active>.el-date-editor__editor::placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-date-editor__trigger.el-icon{
+.el-date-editor__trigger.el-icon{
   color: #c8c8c8;
 }
-.bar-main>.search-item .el-date-editor__editor:focus{
+.el-date-editor__editor:focus{
   border-color: #c8c8c8;
 }
-.bar-main>.search-item .el-date-editor{
+.el-date-editor{
   height: 28px;
 }
-.bar-main>.search-item .el-date-editor:focus,.bar-main>.search-item .el-date-editor:hover{
+.el-date-editor:hover>.el-date-editor__editor{
   border-color: #c8c8c8;
 }
-.bar-main>.search-item .el-date-editor__editor{
+.el-date-editor:focus,.el-date-editor:hover{
+  border-color: #c8c8c8;
+}
+.el-date-editor__editor{
   height: 28px;
 }
-.bar-main>.search-item .el-date-editor__editor::-webkit-input-placeholder {
+.el-date-editor__editor::-webkit-input-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-date-editor__editor::-moz-placeholder {
+.el-date-editor__editor::-moz-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-date-editor__editor:-ms-input-placeholder {
+.el-date-editor__editor:-ms-input-placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-date-editor__editor::placeholder {
+.el-date-editor__editor::placeholder {
 	color: #c8c8c8
 }
-.bar-main>.search-item .el-date-editor__trigger.el-icon{
+.el-date-editor__trigger.el-icon{
   line-height: 30px;
 }
 /*table标题背景样式覆盖*/
@@ -189,4 +222,12 @@ table.customize th{
   background-color: #f07c00;
   color: #fff;
   cursor: default;
+}
+/*上传组件样式覆盖*/
+.adv table.add-table .el-upload{
+  overflow: hidden;
+}
+.adv table.add-table .el-upload__inner{
+  float: left;
+  display: inline-block;
 }

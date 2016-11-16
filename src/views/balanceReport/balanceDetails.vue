@@ -3,7 +3,7 @@
     <div class="balanceDetails-main">
       <div class="infomation fff_bg_color">
         <div class="infomation-head">
-          <h3 class="f16">Balance Details</h3>
+          <h3 class="f16 fl">Balance Details</h3>
         </div>
         <div class="infomation-body">
           <div class="infomation-item f14">

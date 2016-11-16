@@ -1,8 +1,8 @@
 <template>
-  <div class="account content-min-width">
+  <div class="account">
     <div class="account-tab box_shadow_small fff_bg_color">
       <div class="account-tab-main">
-        <div class="account-tab-item cursor_point"><router-link active-class="account-tab-active" to="/advertiser/account" exact>Personal Information</router-link></div>
+        <div class="account-tab-item cursor_point"><router-link active-class="account-tab-active" to="/advertiser/account" :class="{'account-tab-active':$route.path.indexOf('infoEdit')>-1}" exact>Personal Information</router-link></div>
         <div class="account-tab-item cursor_point"><router-link active-class="account-tab-active" to="/advertiser/account/password" exact>Change Password</router-link></div>
         <div class="account-tab-item cursor_point"><router-link active-class="account-tab-active" to="/advertiser/account/key" exact>API Key</router-link></div>
       </div>
