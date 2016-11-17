@@ -7,11 +7,11 @@
         <div class="publisher nav-item cursor_point">Publisher</div>
         <div class="advertiser nav-item cursor_point fr">Advertiser</div>
         <ul class="advertiser-hover">
-          <li class="f16 text-center cursor_point"><router-link active-class="nav-item-active" to="/advertiser" exact>Advertiser Services</router-link></li>
+          <router-link class="f16 text-center cursor_point" active-class="nav-item-active" to="/advertiser" tag="li" exact>Advertiser Services</router-link>
           <li class="f16 text-center cursor_point">Advertiser Terms of Use</li>
         </ul>
       </div>
-      <div class="login nav-item f18 cursor_point" @click="showLogin">Login</div>
+      <div class="login nav-item f18 cursor_point" @click="loginmodal = !loginmodal">Login</div>
       <transition
         name="custom-classes-transition"
         enter-active-class="animated fadeInDown"
@@ -19,14 +19,14 @@
       >
         <div class="login-hover" v-show="loginmodal">
           <div class="login-type">
-            <div @click="changeLoginType('publisher')" :class="{'active': loginType == 'publisher'}" class="type-item f14 text-center cursor_point">Publisher</div>
+            <div @click="loginType = 'publisher'" :class="{'active': loginType == 'publisher'}" class="type-item f14 text-center cursor_point">Publisher</div>
             <div class="type-fenge"></div>
-            <div @click="changeLoginType('advertiser')" :class="{'active': loginType == 'advertiser'}" class="type-item f14 text-center cursor_point">Advertiser</div>
+            <div @click="loginType = 'advertiser'" :class="{'active': loginType == 'advertiser'}" class="type-item f14 text-center cursor_point">Advertiser</div>
           </div>
           <div class="login-input">
-            <div class="login-input-item"><input type="text" placeholder="Username" value=""></div>
-            <div class="login-input-item"><input type="password" placeholder="Password" value=""></div>
-            <div class="login-btn cps_bg_orange text-center">LOGIN</div>
+            <div class="login-input-item"><input type="text" v-model="username" placeholder="Username"></div>
+            <div class="login-input-item"><input type="password" v-model="password" placeholder="Password"></div>
+            <div class="login-btn cps_bg_orange cursor_point text-center" @click="login">LOGIN</div>
           </div>
           <div class="login-forget f14 text-center">
             Forgot your password? <span class="forget-a cps_orange cursor_point">Click here</span> for assistance
@@ -38,22 +38,48 @@
 </template>
 
 <script>
+import {getLS, setLS} from '../../lib/util'
 export default {
   name: 'navheadIndex',
   data () {
     return {
       loginmodal: false,
-      loginType: 'publisher'
+      loginType: 'advertiser',
+      username: 'chenying@yintai.com',
+      password: '123456'
     }
   },
   mounted: function(){
   },
   methods:{
-    showLogin: function(){
-      this.loginmodal = !this.loginmodal;
-    },
-    changeLoginType: function(type){
-      this.loginType = type;
+    login: function(){
+      let url = this.loginType === 'publisher'?'/publisher/login':'/advertiser/login';
+      if(this.username.trim() && this.password.trim())
+      this.$http.post(url, {
+        email: this.username.trim(),
+        password: this.password.trim()
+      })
+      .then((res) => {
+        if(res.s === true){
+          // console.log(1);
+          setLS('cps_personal_info',res.d)
+          // console.log(getLS('cps_personal_info'))
+          this.$router.push('advertiser')
+        }
+        else{
+          this.$message({
+            type: 'warning',
+            message:'The email or password is wrong'
+          })
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        this.$message({
+            type: 'error',
+            message:'Server error'
+          })
+      });
     }
   }
 }
@@ -129,7 +155,7 @@ export default {
   margin-left: 120px;
 }
 .login:hover{
-  font-weight: bold;
+  font-weight: 500;
   color: #ec6a17;
 }
 .login-hover{

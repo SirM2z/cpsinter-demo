@@ -6,6 +6,7 @@ import router from './routers'
 import store from './vuex/store'
 import { sync } from 'vuex-router-sync'
 import axios from 'axios'
+var qs = require('qs');
 require('es6-promise').polyfill()
 import * as filters from './filters'
 
@@ -45,7 +46,12 @@ sync(store, router)
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
   // Do something before request is sent
+  // console.log(config.data);
+  config.data = qs.stringify(config.data);
+  config.withCredentials = true;
+  config.headers['Content-Type'] = 'application/x-www-form-urlencoded';
   store.dispatch('showLoading')
+  // console.log(config)
   return config;
 }, function (error) {
   // Do something with request error
@@ -56,7 +62,7 @@ axios.interceptors.request.use(function (config) {
 axios.interceptors.response.use(function (response) {
   // Do something with response data
   store.dispatch('hideLoading')
-  return response;
+  return response.data;
 }, function (error) {
   // Do something with response error
   return Promise.reject(error)
@@ -65,6 +71,7 @@ axios.interceptors.response.use(function (response) {
 axios.defaults.baseURL = (process.env.NODE_ENV !== 'production' ? config.dev.httpUrl : config.build.httpUrl)
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded'
 Vue.prototype.$http = axios
+Vue.prototype.$qs = qs
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,9 +1,10 @@
 <template>
   <div class="nav-head-Adv cps_bg_orange box_shadow_small">
     <div class="nav-content">
-      <div class="logo fl"><img class="" src="../../assets/images/Duomai.png" alt=""></div>
+      <!--<div class="logo fl"><img class="" src="../../assets/images/Duomai.png" alt=""></div>-->
+      <router-link to="/" tag="div" class="logo fl cursor_point"><img class="" src="../../assets/images/Duomai.png" alt=""></router-link>
       <ul class="nav-main fl f18">
-        <li class="nav-item cursor_pointm fl home-item">
+        <li class="nav-item cursor_point fl home-item">
           <router-link to="/advertiser" exact>Home</router-link>
           <i v-show="$route.name==='Home'" class="nav-item-active-icon"></i>
         </li>
@@ -35,7 +36,7 @@
           <el-dropdown trigger="click">
             <div class="el-dropdown-link cursor_point fl">
               <div class="personal-icon cursor_point fl"><i><img src="../../assets/images/geren.png" alt=""></i></div>
-              <div class="personal-des cursor_point fl"><div class="fff_color">Seven Yu</div><div class="fff_color">(Site ID:77777)</div></div>
+              <div class="personal-des cursor_point fl"><div class="fff_color">{{user.email}}</div><div class="fff_color">(User ID:{{user.id}})</div></div>
             </div>
             <el-dropdown-menu class="personal-dropdown-menu" slot="dropdown">
               <el-dropdown-item><router-link to="/advertiser/account" class="personal-menu-item" tag="div"><div class="personal-account-icon"></div><div class="personal-account-des">Account</div></router-link></el-dropdown-item>
@@ -52,6 +53,7 @@
 import elDropdown from 'element-ui/lib/dropdown'
 import elDropdownMenu from 'element-ui/lib/dropdown-menu'
 import elDropdownItem from 'element-ui/lib/dropdown-item'
+import {getLS, setLS} from '../../lib/util'
 export default {
   name: 'navheadAdv',
   components: {
@@ -61,6 +63,7 @@ export default {
   },
   data () {
     return {
+      user: getLS('cps_personal_info')
     }
   },
   mounted: function(){

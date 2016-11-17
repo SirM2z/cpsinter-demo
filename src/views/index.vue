@@ -11,14 +11,14 @@
           <p class="adver-info cps_orange f24 font-bold">Drive more sales with CPS Affiliate</p>
           <div class="img"><img src="../assets/images/picture_1.png" alt=""></div>
           <p class="info-detail f15">Connect with consumers and drive more sales with the world’s largest, most productive publisher network.</p>
-          <div class="apply-btn">APPLY TO BECOME A ADVERTISER</div>
+          <div class="apply-btn cursor_point">APPLY TO BECOME A ADVERTISER</div>
         </div>
         <div class="publisher">
           <h3 class="f24 font-bold">Publisher</h3>
           <p class="publisher-info cps_orange f24 font-bold">Make more money from your website</p>
           <div class="img"><img src="../assets/images/picture_2.png" alt=""></div>
           <p class="info-detail f15">Connect with consumers and drive more sales with the world’s largest, most productive publisher network.</p>
-          <div class="apply-btn font-bold">APPLY TO BECOME A PUBLISHER</div>
+          <div class="apply-btn cursor_point">APPLY TO BECOME A PUBLISHER</div>
         </div>
       </div>
     </div>
@@ -28,7 +28,7 @@
         <div class="info-title f20 font-bold">The world's most successful internet retailers are 2x more likely to choose CPS Affiliate.</div>
         <p class="website-detail f15">Whether it's monetizing website traffic, driving more sales or finding more customers, we understand that our clients' goals are our goals. Learn why affiliate marketing is critical in today’s marketplace and listen to top advertisers and publishers discuss the results they’ve seen running their pay-for-performance programs on the CPS Network.</p>
         <div class="note f18 font-bold">Experience a better network today!</div>
-        <div class="btn-more f18 text-center cps_bg_orange">LEARN MORE>></div>
+        <div class="btn-more f18 text-center cps_bg_orange cursor_point">LEARN MORE>></div>
       </div>
     </div>
     <div class="contact-div">
@@ -202,6 +202,7 @@ div.img{
 }
 .foot-left{
   width: 900px;
+  padding-left: 20px;
 }
 .foot-left>p{
   line-height: 20px;
