@@ -10,11 +10,11 @@
           <table class="customize add-table" style="width:100%;" cellspacing="0" cellpadding="0" border="0">
             <tr>
               <th>Advertisers Name <span>*</span></th>
-              <td>JD</td>
+              <td>{{user.adser}}</td>
             </tr>
             <tr>
               <th>Email <span>*</span></th>
-              <td>34678456@163.com</td>
+              <td>{{user.email}}</td>
             </tr>
             <tr>
               <th>Currency <span>*</span></th>
@@ -26,7 +26,7 @@
                 <div class="width-280 fl">
                   <el-input
                     placeholder=""
-                    v-model="telephone">
+                    v-model="user.tele">
                   </el-input>
                 </div>
               </td>
@@ -58,18 +58,18 @@
                 <div class="width-280 fl">
                   <el-input
                     placeholder=""
-                    v-model="fax_number">
+                    v-model="user.fax">
                   </el-input>
                 </div>
               </td>
             </tr>
             <tr>
-              <th>Contacts <span>*</span></th>
+              <th>Contact <span>*</span></th>
               <td>
                 <div class="width-280 fl">
                   <el-input
                     placeholder=""
-                    v-model="contacts">
+                    v-model="user.contact">
                   </el-input>
                 </div>
               </td>
@@ -80,7 +80,7 @@
                 <div class="width-280 fl">
                   <el-input
                     placeholder=""
-                    v-model="site_name">
+                    v-model="user.web">
                   </el-input>
                 </div>
               </td>
@@ -91,7 +91,7 @@
                 <div class="width-280 fl">
                   <el-input
                     placeholder=""
-                    v-model="site_URL">
+                    v-model="user.url">
                   </el-input>
                 </div>
               </td>
@@ -102,7 +102,7 @@
                 <div class="width-280 fl">
                   <el-input
                     placeholder=""
-                    v-model="company_name">
+                    v-model="user.company">
                   </el-input>
                 </div>
               </td>
@@ -113,7 +113,7 @@
                 <div class="width-280 fl">
                   <el-input
                     placeholder=""
-                    v-model="company_address">
+                    v-model="user.address">
                   </el-input>
                 </div>
               </td>
@@ -126,7 +126,7 @@
                     type="textarea"
                     :autosize="{ minRows: 2, maxRows: 6}"
                     placeholder=""
-                    v-model="remark">
+                    v-model="user.info">
                   </el-input>
                 </div>
               </td>
@@ -135,7 +135,7 @@
         </div>
         <div class="add-btn text-center">
           <span class="add-confirm-btn cursor_point cps_bg_orange f14">Confirm</span>
-          <span class="add-return-btn cursor_point cps_bg_orange f14">Return</span>
+          <span @click="$router.go(-1)" class="add-return-btn cursor_point cps_bg_orange f14">Return</span>
         </div>
       </div>
     </div>
@@ -146,6 +146,7 @@
 import elInput from 'element-ui/lib/input'
 import elSelect from 'element-ui/lib/select'
 import elOption from 'element-ui/lib/option'
+import {getLS, setLS} from '../../lib/util'
 export default {
   name: 'infoEdit',
   components: {
@@ -155,33 +156,14 @@ export default {
   },
   data () {
     return {
-      telephone: '',
+      user: getLS('cps_personal_info'),
       MSN_Facebook: '',
       MSN_Facebook_value: '',
-      fax_number: '',
-      contacts: '',
-      site_name: '',
-      site_URL: '',
-      company_name: '',
-      company_address: '',
-      remark: '',
       // 数据
-      options: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
+      options: [
+        {value: '0',label: 'MSN'},
+        {value: '1',label: 'Facebook'}
+      ],
     }
   },
   methods:{

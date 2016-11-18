@@ -98,7 +98,7 @@ export default new Router({
             },
             {
               path: 'infoEdit',
-              name: 'Personal Information',
+              name: 'Personal Information Edit',
               component: (resolve) => require(['./views/account/infoEdit.vue'], resolve)
             },
             {

@@ -20,7 +20,7 @@ module.exports = {
   dev: {
     env: require('./dev.env'),
     port: 80,
-    httpUrl: 'https://api.github.com',
+    httpUrl: 'http://apis.duomai.com',
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {},

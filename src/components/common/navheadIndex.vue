@@ -76,9 +76,9 @@ export default {
       .catch((error) => {
         // console.log(error);
         this.$message({
-            type: 'error',
-            message:'Server error'
-          })
+          type: 'error',
+          message:'Server error'
+        })
       });
     }
   }

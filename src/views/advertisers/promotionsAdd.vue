@@ -73,7 +73,7 @@
         </div>
         <div class="add-btn text-center">
           <span class="add-confirm-btn cursor_point cps_bg_orange f14">Confirm</span>
-          <span class="add-return-btn cursor_point cps_bg_orange f14">Return</span>
+          <span @click="$router.go(-1)" class="add-return-btn cursor_point cps_bg_orange f14">Return</span>
         </div>
       </div>
     </div>

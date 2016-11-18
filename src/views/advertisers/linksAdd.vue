@@ -13,9 +13,9 @@
               <td>
                 <div>
                   <el-radio-group v-model="link_type">
-                    <el-radio :label="3">Picture</el-radio>
-                    <el-radio :label="6">Text Link</el-radio>
-                    <el-radio :label="9">Custom Link</el-radio>
+                    <el-radio :label="1">Picture</el-radio>
+                    <el-radio :label="2">Text Link</el-radio>
+                    <el-radio :label="3">Custom Link</el-radio>
                   </el-radio-group>
                 </div>
               </td>
@@ -34,7 +34,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr v-if="link_type===1">
               <th>Material type <span>*</span></th>
               <td>
                 <div class="width-280">
@@ -48,7 +48,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr v-if="link_type===1">
               <th>Incentive Activities <span>*</span></th>
               <td>
                 <div class="width-280">
@@ -73,14 +73,15 @@
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr v-if="link_type===1">
               <th>Upload Pictures <span>*</span></th>
               <td>
                 <div class="upload-td-box">
                   <div class="input-file">
                     <el-upload
                       action="//jsonplaceholder.typicode.com/posts/"
-                      :show-upload-list="false">
+                      :show-upload-list="false"
+                      :with-credentials="true">
                       <div class="input-file-btn cursor_point f14 text-center fl">Select File</div>
                     </el-upload>
                   </div>
@@ -93,7 +94,7 @@
                 </div>
               </td>
             </tr>
-            <tr>
+            <tr v-if="link_type===1">
               <th>Network Image Address <span>*</span></th>
               <td>
                 <div class="width-280">
@@ -105,7 +106,7 @@
                 <p class="table-td-note f14 fl">If E-commerce has a active picture, paste the picture address to here</p>
               </td>
             </tr>
-            <tr>
+            <tr v-if="link_type===1 || link_type===2">
               <th>URL <span>*</span></th>
               <td>
                 <div class="width-280">
@@ -115,6 +116,33 @@
                   </el-input>
                 </div>
                 <p class="table-td-note f14 fl">Suggest fill, if you do not fill in the campaign will use the default address</p>
+              </td>
+            </tr>
+            <tr v-if="link_type===3">
+              <th>Size <span>*</span></th>
+              <td>
+                <div class="fl">
+                  <el-input-number v-model="size_start" :step="10"></el-input-number>
+                </div>
+                <div class="fl" style="height:28px;line-height:28px;">&nbsp;px&nbsp;*&nbsp;</div>
+                <div class="fl">
+                  <el-input-number v-model="size_end" :step="10"></el-input-number>
+                </div>
+                <div class="fl" style="height:28px;line-height:28px;">&nbsp;px&nbsp;(width * height)&nbsp;</div>
+                <div style="clear: both;"></div>
+              </td>
+            </tr>
+            <tr v-if="link_type===3">
+              <th>Links Content <span>*</span></th>
+              <td>
+                <div class="width-280">
+                  <el-input
+                    type="textarea"
+                    :autosize="{ minRows: 2, maxRows: 6}"
+                    placeholder=""
+                    v-model="links_content">
+                  </el-input>
+                </div>
               </td>
             </tr>
             <tr>
@@ -141,7 +169,7 @@
         </div>
         <div class="add-btn text-center">
           <span class="add-confirm-btn cursor_point cps_bg_orange f14">Confirm</span>
-          <span class="add-return-btn cursor_point cps_bg_orange f14">Return</span>
+          <span @click="$router.go(-1)" class="add-return-btn cursor_point cps_bg_orange f14">Return</span>
         </div>
       </div>
     </div>
@@ -155,6 +183,7 @@ import elOption from 'element-ui/lib/option'
 import elRadio from 'element-ui/lib/radio'
 import elRadioGroup from 'element-ui/lib/radio-group'
 import elUpload from 'element-ui/lib/upload'
+import elInputNumber from 'element-ui/lib/input-number'
 export default {
   name: 'linksAdd',
   components: {
@@ -163,17 +192,21 @@ export default {
     elOption,
     elRadio,
     elRadioGroup,
-    elUpload
+    elUpload,
+    elInputNumber
   },
   data () {
     return {
-      link_type: '',
+      link_type: 1,
       activity: '',
       material_type: '',
       incentive_activities: '',
       link_name: '',
       network_image_address: '',
       URL: '',
+      size_start: '',
+      size_end: '',
+      links_content: '',
       validity_start: '',
       validity_end: '',
       // 数据

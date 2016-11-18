@@ -11,26 +11,27 @@
           <div class="infomation-item f14">
             <div class="item">
               <label>Advertisers Name: </label>
-              <span class="">JD  （User ID：7777777）</span>
+              <span class="">{{user.adser}} （User ID：{{user.id}}）</span>
             </div>
             <div class="item">
               <label>Telephone: </label>
-              <span class="">45964768346</span>
+              <span class="">{{user.tele}}</span>
             </div>
             <div class="item">
               <label>Email: </label>
-              <span class="">3249637@163.com</span>
+              <span class="">{{user.email}}</span>
             </div>
           </div>
           <div class="infomation-item f14">
             <div class="item">
               <label>Password: </label>
               <span class="">******</span>
-              <a href="">Modify</a>
+              <router-link to="/advertiser/account/password">Modify</router-link>
+              <!--<a href="">Modify</a>-->
             </div>
             <div class="item">
               <label>MSN/Facebook: </label>
-              <span class="">405734578（Facebook）</span>
+              <span class="">405734578(Facebook)</span>
             </div>
             <div class="item">
               <label>Currency: </label>
@@ -39,36 +40,36 @@
           </div>
           <div class="infomation-item f14">
             <div class="item">
-              <label>Contacts: </label>
-              <span class=""></span>
+              <label>Contact: </label>
+              <span class="">{{user.contact}}</span>
             </div>
             <div class="item">
               <label>Fax Number: </label>
-              <span class=""></span>
+              <span class="">{{user.fax}}</span>
             </div>
             <div class="item">
               <label>Site Name: </label>
-              <span class="">JD</span>
+              <span class="">{{user.web}}</span>
             </div>
           </div>
           <div class="infomation-item f14">
             <div class="item">
               <label>Site URL: </label>
-              <span class="">http://m.jd.com/</span>
+              <span class="">{{user.url}}</span>
             </div>
             <div class="item">
               <label>Company Name: </label>
-              <span class=""></span>
+              <span class="">{{user.company}}</span>
             </div>
             <div class="item">
               <label>Company Address: </label>
-              <span class="">JD</span>
+              <span class="">{{user.address}}</span>
             </div>
           </div>
           <div class="infomation-item f14">
             <div class="item">
               <label>Review Status: </label>
-              <span class="">Approved</span>
+              <span class="">{{user.status==1?"已审核":"未审核"}}</span>
             </div>
             <div class="item">
               <label> </label>
@@ -86,11 +87,17 @@
 </template>
 
 <script>
+import {getLS, setLS} from '../../lib/util'
 export default {
   name: 'info',
   data () {
     return {
+      user: getLS('cps_personal_info')
     }
+  },
+  mounted: function(){
+    // 获取广告主信息
+    // this.getInfo()
   },
   methods:{
   }

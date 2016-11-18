@@ -33,7 +33,32 @@ export default {
     return {
     }
   },
+  mounted: function(){
+    // 获取财务信息
+    this.getInfo()
+  },
   methods:{
+    getInfo: function(){
+      this.$http.post('/advertiseract/finance')
+      .then((res) => {
+        if(res.s === true){
+          console.log(res.d)
+        }
+        else{
+          this.$message({
+            type: 'warning',
+            message:'Server error'
+          })
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        this.$message({
+          type: 'error',
+          message:'Server error'
+        })
+      });
+    }
   }
 }
 </script>

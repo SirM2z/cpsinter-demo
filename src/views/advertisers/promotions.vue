@@ -14,9 +14,9 @@
               <p class="f14">Advertising Campaign</p>
               <el-select v-model="search_campaign" placeholder="please select" clearable>
                 <el-option
-                  v-for="item in options"
-                  :label="item.label"
-                  :value="item.value">
+                  v-for="item in activityOptions"
+                  :label="item.title"
+                  :value="item.id">
                 </el-option>
               </el-select>
             </div>
@@ -24,13 +24,13 @@
               <p class="f14">Review Status</p>
               <el-select v-model="search_state" placeholder="please select" clearable>
                 <el-option
-                  v-for="item in options"
+                  v-for="item in stateOptions"
                   :label="item.label"
                   :value="item.value">
                 </el-option>
               </el-select>
             </div>
-            <div class="search-btn cursor_point cps_bg_orange text-center f14 fl">search</div>
+            <div @click="searchList" class="search-btn cursor_point cps_bg_orange text-center f14 fl">search</div>
           </div>
         </transition>
       </div>
@@ -54,18 +54,19 @@
             border
             style="width: 100%">
             <el-table-column
-              prop="date"
-              label="日期"
-              width="180">
+              prop="title"
+              label="Promotion Name">
             </el-table-column>
             <el-table-column
-              prop="name"
-              label="姓名"
-              width="180">
+              inline-template
+              label="Period Of Validity">
+              <div>
+                {{row.avalid_from}} to {{row.avalid_to}}
+              </div>
             </el-table-column>
             <el-table-column
-              prop="address"
-              label="地址">
+              prop="status"
+              label="Review State">
             </el-table-column>
           </el-table>
         </div>
@@ -99,50 +100,89 @@ export default {
       // 分页配置
       current_page: 1,
       page_sizes: [20, 50, 100, 200],
-      page_size: 50,
-      page_total: 400,
+      page_size: 20,
+      page_total: 0,
       // 数据
-      options: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      activityOptions: null,
+      stateOptions: [
+        {value: '0',label: 'Not reviewed',label_des: '未审核'},
+        {value: '1',label: 'Approval',label_des: '已审核'}
+      ],
+      tableData: null
     }
   },
+  mounted: function(){
+    // 获取促销列表
+    this.getList()
+    // 获取活动列表
+    this.getActivityList()
+  },
   methods:{
+    getList(){
+      this.$http.post('/advertiseract/cuxiao', {
+        rows: this.page_size,
+        page: this.current_page,
+        ads_id: this.search_campaign,
+        status: this.search_state
+      })
+      .then((res) => {
+        if(res.s === true){
+          // console.log(res.d)
+          this.page_total = res.d.total
+          this.tableData = res.d.rows
+        }
+        else{
+          this.$message({
+            type: 'warning',
+            message:'Server error'
+          })
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        this.$message({
+          type: 'error',
+          message:'Server error'
+        })
+      });
+    },
+    getActivityList: function(){
+      this.$http.post('/advertiseract/list', {
+        debug: true
+      })
+      .then((res) => {
+        if(res.s === true){
+          // console.log(res.d)
+          this.activityOptions = res.d
+        }
+        else{
+          this.$message({
+            type: 'warning',
+            message:'Server error'
+          })
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        this.$message({
+          type: 'error',
+          message:'Server error'
+        })
+      });
+    },
     handleSizeChange: function(pageSize){
-      console.log(pageSize)
+      this.current_page = 1
+      this.page_size = pageSize
+      this.getList()
     },
     handleCurrentChange: function(pageCurrent){
-      console.log(pageCurrent)
+      // todo: 验证页面是否超出
+      this.current_page = pageCurrent
+      this.getList()
+    },
+    searchList: function(){
+      // todo: 验证搜索条件
+      this.getList();
     }
   }
 }

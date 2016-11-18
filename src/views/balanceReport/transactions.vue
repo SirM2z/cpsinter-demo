@@ -28,7 +28,7 @@
               <p class="f14">Type</p>
               <el-select v-model="search_type" placeholder="please select" clearable>
                 <el-option
-                  v-for="item in options"
+                  v-for="item in typeOptions"
                   :label="item.label"
                   :value="item.value">
                 </el-option>
@@ -58,18 +58,31 @@
             border
             style="width: 100%">
             <el-table-column
-              prop="date"
-              label="日期"
-              width="180">
+              prop="addtime"
+              label="Creation Time">
             </el-table-column>
             <el-table-column
-              prop="name"
-              label="姓名"
-              width="180">
+              prop="title"
+              label="Advertising Campaign">
             </el-table-column>
             <el-table-column
-              prop="address"
-              label="地址">
+              prop="finance_type"
+              label="Type">
+            </el-table-column>
+            </el-table-column>
+            <el-table-column
+              prop="amount"
+              label="Amount">
+            </el-table-column>
+            </el-table-column>
+            <el-table-column
+              prop="account"
+              label="Blance">
+            </el-table-column>
+            </el-table-column>
+            <el-table-column
+              prop="note"
+              label="Remark">
             </el-table-column>
           </el-table>
         </div>
@@ -105,54 +118,67 @@ export default {
       search_time: '',
       search_input: '',
       search_type: '',
-      export_type: '',
       // 分页配置
       current_page: 1,
       page_sizes: [20, 50, 100, 200],
-      page_size: 50,
-      page_total: 400,
+      page_size: 20,
+      page_total: 0,
       // 数据
-      options: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      typeOptions: [
+        {value: '预付款',label: 'Prepayments',label_des: '预付款'},
+        {value: '保证金',label: 'Security deposit',label_des: '保证金'}
+      ],
+      tableData: null
     }
   },
+  mounted: function(){
+    // 获取财务明细列表
+    this.getList()
+  },
   methods:{
+    getList(){
+      this.$http.post('/advertiseract/financedetail', {
+        rows: this.page_size,
+        page: this.current_page,
+        ads_id: this.search_input,
+        finance_type: this.search_type,
+        time_from: this.search_time?this.search_time[0]:'',
+        time_to: this.search_time?this.search_time[1]:''
+      })
+      .then((res) => {
+        if(res.s === true){
+          // console.log(res.d)
+          this.page_total = res.d.total
+          this.tableData = res.d.rows
+        }
+        else{
+          this.$message({
+            type: 'warning',
+            message:'Server error'
+          })
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        this.$message({
+          type: 'error',
+          message:'Server error'
+        })
+      });
+    },
     handleSizeChange: function(pageSize){
-      console.log(pageSize)
+      this.current_page = 1
+      this.page_size = pageSize
+      this.getList()
     },
     handleCurrentChange: function(pageCurrent){
-      console.log(pageCurrent)
+      // todo: 验证页面是否超出
+      this.current_page = pageCurrent
+      this.getList()
+    },
+    searchList: function(){
+      // todo: 验证搜索条件
+      this.getList();
     }
   }
 }

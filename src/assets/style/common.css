@@ -117,7 +117,17 @@ table.customize th{
 .el-select .el-input .el-input__icon{
   color: #c8c8c8;
 }
-.el-select .el-input__inner:focus{
+.el-select .el-input__inner:focus,.el-input__inner:focus{
+  border-color: #c8c8c8;
+}
+/*input计步器输入框样式覆盖*/
+.el-input-number__decrease, .el-input-number__increase{
+  line-height: 26px;
+}
+.el-input-number__decrease:hover, .el-input-number__increase:hover{
+  color: #f07c00;
+}
+.el-input.is-active .el-input__inner{
   border-color: #c8c8c8;
 }
 /*Radio 单选框样式覆盖*/
@@ -129,24 +139,24 @@ table.customize th{
   border-color: #f07c00;
 }
 /*导出input输入框样式覆盖*/
-.bar-main>.export-item .el-input__inner{
+.bar-head .export-div .el-input__inner{
   width: 120px;
   border-color: #f07c00;
   color: #f07c00;
 }
-.bar-main>.export-item .el-input__inner::-webkit-input-placeholder{
+.bar-head .export-div .el-input__inner::-webkit-input-placeholder{
   color: #f07c00;
 }
-.bar-main>.export-item .el-input__inner::-moz-placeholder{
+.bar-head .export-div .el-input__inner::-moz-placeholder{
   color: #f07c00;
 }
-.bar-main>.export-item .el-input__inner:-ms-input-placeholder{
+.bar-head .export-div .el-input__inner:-ms-input-placeholder{
   color: #f07c00;
 }
-.bar-main>.export-item .el-input__inner::placeholder{
+.bar-head .export-div .el-input__inner::placeholder{
   color: #f07c00;
 }
-.bar-main>.export-item .el-select .el-input .el-input__icon{
+.bar-head .export-div .el-select .el-input .el-input__icon{
   color: #f07c00;
 }
 /*日期选择器input输入框样式覆盖*/
@@ -207,12 +217,12 @@ table.customize th{
   line-height: 30px;
 }
 /*table标题背景样式覆盖*/
-.main-table>.table-content .el-table th {
+/*.main-table>.table-content .el-table th {
   background-color: #f7f7f7;
 }
 .main-table>.table-content .el-table__header-wrapper thead div {
-    background-color: #f7f7f7;
-}
+  background-color: #f7f7f7;
+}*/
 /*分页样式覆盖*/
 .el-pager li:hover {
   color: #f07c00;

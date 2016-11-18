@@ -19,7 +19,7 @@
               <p class="f14">Activity State</p>
               <el-select v-model="search_state" placeholder="please select" clearable>
                 <el-option
-                  v-for="item in options"
+                  v-for="item in activityState"
                   :label="item.label"
                   :value="item.value">
                 </el-option>
@@ -29,13 +29,13 @@
               <p class="f14">Review Way</p>
               <el-select v-model="search_review" placeholder="please select" clearable>
                 <el-option
-                  v-for="item in options"
+                  v-for="item in reviewWay"
                   :label="item.label"
                   :value="item.value">
                 </el-option>
               </el-select>
             </div>
-            <div class="search-btn cursor_point cps_bg_orange text-center f14 fl">search</div>
+            <div @click="searchList" class="search-btn cursor_point cps_bg_orange text-center f14 fl">search</div>
           </div>
         </transition>
       </div>
@@ -59,18 +59,30 @@
             border
             style="width: 100%">
             <el-table-column
-              prop="date"
-              label="日期"
+              label="Activity"
+              width="700"
+              inline-template>
+              <div class="activity-table-td">
+                <div class="activity-img"><img :src="getImgSrc(row)" alt=""></div>
+                <div>
+                  <p>{{row.title}}</p>
+                  <p>Activity Time:{{row.stime}} to {{row.etime}}</p>
+                </div>
+              </div>
+            </el-table-column>
+            <el-table-column
+              prop="links"
+              label="Number Of Links"
               width="180">
             </el-table-column>
             <el-table-column
-              prop="name"
-              label="姓名"
-              width="180">
+              prop="apply_mode_name"
+              label="Review Way">
+            </el-table-column>
             </el-table-column>
             <el-table-column
-              prop="address"
-              label="地址">
+              prop="apply_status_name"
+              label="Activity State">
             </el-table-column>
           </el-table>
         </div>
@@ -107,50 +119,78 @@ export default {
       // 分页配置
       current_page: 1,
       page_sizes: [20, 50, 100, 200],
-      page_size: 50,
-      page_total: 400,
+      page_size: 20,
+      page_total: 0,
       // 数据
-      options: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
-      tableData: [{
-        date: '2016-05-02',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1518 弄'
-      }, {
-        date: '2016-05-04',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1517 弄'
-      }, {
-        date: '2016-05-01',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1519 弄'
-      }, {
-        date: '2016-05-03',
-        name: '王小虎',
-        address: '上海市普陀区金沙江路 1516 弄'
-      }]
+      activityState: [
+        {value: '0',label: 'Wait Submit',label_des: '待提交'},
+        {value: '1',label: 'Wait Audit',label_des: '待审核'},
+        {value: '2',label: 'Refused',label_des: '已拒绝'},
+        {value: '3',label: 'Active',label_des: '运行中'},
+        {value: '4',label: 'Modify',label_des: '修改待审核'},
+        {value: '5',label: 'Hidden',label_des: '已冻结'},
+        {value: '6',label: 'Complete',label_des: '已完成'},
+        {value: '7',label: 'Expired',label_des: '已终止'},
+        {value: '8',label: 'Hang',label_des: '已挂起'}
+      ],
+      reviewWay: [
+        {value: '0',label: 'Without review',label_des: '无须审核'},
+        {value: '1',label: 'Human review',label_des: '人工审核'},
+        {value: '2',label: 'Automated Review',label_des: '自动通过'}
+      ],
+      tableData: null
     }
   },
+  mounted: function(){
+    // 获取活动列表
+    this.getList()
+  },
   methods:{
+    getList(){
+      this.$http.post('/advertiseract/list', {
+        rows: this.page_size,
+        page: this.current_page,
+        keyword: this.search_input,
+        apply_status: this.search_state,
+        apply_mode: this.search_review
+      })
+      .then((res) => {
+        if(res.s === true){
+          // console.log(res.d)
+          this.page_total = res.d.total
+          this.tableData = res.d.rows
+        }
+        else{
+          this.$message({
+            type: 'warning',
+            message:'Server error'
+          })
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        this.$message({
+          type: 'error',
+          message:'Server error'
+        })
+      });
+    },
     handleSizeChange: function(pageSize){
-      console.log(pageSize)
+      this.current_page = 1
+      this.page_size = pageSize
+      this.getList()
     },
     handleCurrentChange: function(pageCurrent){
-      console.log(pageCurrent)
+      // todo: 验证页面是否超出
+      this.current_page = pageCurrent
+      this.getList()
+    },
+    searchList: function(){
+      // todo: 验证搜索条件
+      this.getList();
+    },
+    getImgSrc: function(row){
+      return row.logo
     }
   }
 }

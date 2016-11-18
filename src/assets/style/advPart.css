@@ -5,7 +5,7 @@
 }
 .bar-head{
   overflow: hidden;
-  padding: 15px 0 10px 10px;
+  padding: 15px 30px 10px 10px;
   border-bottom: 1px solid #e1e1e1;
 }
 .collapsible{
@@ -26,7 +26,6 @@
 .bar-add-btn{
   padding: 5px 8px;
   color: #fff;
-  margin-right: 30px;
   border-radius: 2px;
 }
 .slide-enter-active, .slide-leave-active {
@@ -58,10 +57,6 @@
   border-radius: 2px;
   color: #fff;
 }
-.bar-main>.search-item.export-item{
-  margin-top: 20px;
-  margin-left: 0;
-}
 .export-type{
   display: inline-block;
 }
@@ -84,6 +79,18 @@
 }
 .table-content{
   margin: 10px 0;
+}
+.table-content .activity-table-td{
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+.table-content .activity-img{
+  margin-right: 20px;
+}
+.table-content .activity-img>img{
+  display: inherit;
+  width: 200px;
 }
 /*表格注解样式*/
 .table-note{
@@ -127,7 +134,7 @@
   background-color: #f07c00;
 }
 .infomation-body{
-  padding: 30px 200px 0;
+  padding: 30px 150px 0;
 }
 .infomation-item{
   display: flex;

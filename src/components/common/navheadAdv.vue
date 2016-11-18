@@ -112,9 +112,9 @@ export default {
   position: absolute;
   width: 0;
   height: 0;
-  border-left: 8px solid transparent;
-  border-right: 8px solid transparent;
-  border-bottom: 7px solid #f1f1f1;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 9px solid #f1f1f1;
   top: 42px;
 }
 .home-item>i{

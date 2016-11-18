@@ -49,9 +49,18 @@ import elRadioGroup from 'element-ui/lib/radio-group'
 import elRadioButton from 'element-ui/lib/radio-button'
 import 'element-ui/lib/theme-default/radio.css'
 
+// Button 按钮
+import elButton from 'element-ui/lib/button'
+import elButtonGroup from 'element-ui/lib/button-group'
+import 'element-ui/lib/theme-default/button.css'
+
 // Input 输入框
 import elInput from 'element-ui/lib/input'
 import 'element-ui/lib/theme-default/input.css'
+
+// Input Number 数字输入框
+import elInputNumber from 'element-ui/lib/input-number'
+import 'element-ui/lib/theme-default/input-number.css'
 
 // Select 选择器
 import elSelect from 'element-ui/lib/select'

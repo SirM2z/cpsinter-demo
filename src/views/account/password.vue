@@ -19,7 +19,7 @@
                   <div class="width-280">
                     <el-input
                       placeholder=""
-                      v-model="original_password">
+                      v-model.trim="original_password">
                     </el-input>
                   </div>
                 </td>
@@ -30,7 +30,7 @@
                   <div class="width-280 fl">
                     <el-input
                       placeholder=""
-                      v-model="new_password">
+                      v-model.trim="new_password">
                     </el-input>
                   </div>
                 </td>
@@ -41,7 +41,7 @@
                   <div class="width-280 fl">
                     <el-input
                       placeholder=""
-                      v-model="confirm_password">
+                      v-model.trim="confirm_password">
                     </el-input>
                   </div>
                 </td>
@@ -50,7 +50,7 @@
         </div>
         <div class="add-btn text-center">
           <span class="add-confirm-btn cursor_point cps_bg_orange f14">Confirm</span>
-          <span class="add-return-btn cursor_point cps_bg_orange f14">Return</span>
+          <span @click="$router.go(-1)" class="add-return-btn cursor_point cps_bg_orange f14">Return</span>
         </div>
       </div>
     </div>
@@ -72,6 +72,31 @@ export default {
     }
   },
   methods:{
+    changePass: function(){
+      // todo: 判断新密码是否一样
+      this.$http.post('/advertiser/updateinfo', {
+        old: this.original_password,
+        passwd: this.new_password
+      })
+      .then((res) => {
+        if(res.s === true){
+          console.log(res.d)
+        }
+        else{
+          this.$message({
+            type: 'warning',
+            message:'Server error'
+          })
+        }
+      })
+      .catch((error) => {
+        // console.log(error);
+        this.$message({
+          type: 'error',
+          message:'Server error'
+        })
+      });
+    }
   }
 }
 </script>
